@@ -42,37 +42,44 @@ dotnet add package DevToAPI
 
 ## Usage examples
 
-### Console
+### Create new article
 ```csharp
 var client = new DevToClient("api-key");
-var me = await client.Users.GetMeAsync();
-```
-
-### ASP.NET Core
-```csharp
-collection.AddSingleton<IDevToClient>(x => new DevToClient("api-key")));
+await client.Articles.CreateAsync(new CreateArticle()
+{
+    Title = "My post",
+    BodyMarkdown = "...",
+    Tags = new List<string>()
+    {
+        "csharp",
+        "opensource"
+    },
+    Published = true
+});
 ```
 
 ### Specific page
 ```csharp
-var pagination = await client.ReadingLists.GetAsync(option => 
+var client = new DevToClient("api-key");
+var pagination = await client.Articles.GetAllMyAsync(option =>
 {
-    Page = 5,
-    PageSize = 10
+    option.Page = 5;
+    option.PageSize = 10;
 });
 ```
 
 ### Pagination
 ```csharp
-var pagination = await client.ReadingLists.GetAsync();
+var client = new DevToClient("api-key");
+var pagination = await client.Articles.GetAllMyAsync();
 
 while (pagination.CanMoveNext)
 {
-   var lists = pagination.Items;
-   
-   // do stuff...
-      
-   await pagination.NextPageAsync();
+    var myArticles = pagination.Items;
+
+    //do stuff
+
+    await pagination.NextPageAsync();
 }
 ```
 ## Supported Platforms
