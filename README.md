@@ -4,10 +4,14 @@
 <h2 align="center">
   DevToAPI - Forem/DEV API Client Library for .NET
 </h2>
+<h4 align="center">
+  Client library targeting .NET Framework 4.5.2+ and .NET Standard 2+
+</h4>
 <p align="center">
+<img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/podobaas/DevToAPI/DevToAPI%20CI?label=DevToAPI%20CI&style=flat-square">
+<img alt="Nuget" src="https://img.shields.io/nuget/v/DevToAPI.svg?style=flat-square&label=nuget">
+ <img alt="GitHub" src="https://img.shields.io/github/license/podobaas/DevToAPI?style=flat-square">
 </p>
-
-<h4 align="center">Client library targeting .NET Framework 4.5.2+ and .NET Standard 2+</h1>
 
 ## Implemented endpoints
 
@@ -30,7 +34,7 @@
 
 ## Install
 
-DevToAPI is available for install from [NuGet]()
+DevToAPI is available for install from [NuGet](https://www.nuget.org/packages/DevToAPI/)
 
 ```
 dotnet add package DevToAPI
