@@ -10,6 +10,7 @@
 <p align="center">
 <img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/podobaas/DevToAPI/DevToAPI%20CI?label=DevToAPI%20CI&style=flat-square">
 <img alt="Nuget" src="https://img.shields.io/nuget/v/DevToAPI.svg?style=flat-square&label=nuget">
+<a href="https://www.codacy.com/gh/podobaas/DevToAPI/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=podobaas/DevToAPI&amp;utm_campaign=Badge_Grade"><img src="https://app.codacy.com/project/badge/Grade/737a41d4c0754f5aabf83e826f0e5310"/></a>
  <img alt="GitHub" src="https://img.shields.io/github/license/podobaas/DevToAPI?style=flat-square">
 </p>
 
