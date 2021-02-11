@@ -15,6 +15,8 @@
 
 ## Implemented endpoints
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/bdcb5f88407540df9d6fde719317b311)](https://app.codacy.com/gh/podobaas/DevToAPI?utm_source=github.com&utm_medium=referral&utm_content=podobaas/DevToAPI&utm_campaign=Badge_Grade_Settings)
+
 | Route  | Methods |
 | ------------- | ------------- |
 | [Articles](https://docs.dev.to/api/#tag/articles)  | All methods |
