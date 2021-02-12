@@ -13,6 +13,8 @@ DevToAPI - Forem/DEV API Client Library for .NET
 <a href="https://www.codacy.com/gh/podobaas/DevToAPI/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=podobaas/DevToAPI&amp;utm_campaign=Badge_Grade"><img src="https://app.codacy.com/project/badge/Grade/737a41d4c0754f5aabf83e826f0e5310"/></a>
  <img alt="GitHub" src="https://img.shields.io/github/license/podobaas/DevToAPI?style=flat">
 </h2>
+<br/>
+<br/>
 
 ## Implemented endpoints
 
