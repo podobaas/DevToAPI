@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/160/google/274/man-technologist_1f468-200d-1f4bb.png">
+<img src="https://d2fltix0v2e0sb.cloudfront.net/dev-ecosystem.png" height="150" width="150">
 </p>
 
 <h2 align="center">
