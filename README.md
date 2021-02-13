@@ -11,8 +11,8 @@ DevToAPI - Forem/DEV API Client Library for .NET
 <br/>
 <img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/podobaas/DevToAPI/DevToAPI%20CI?color=green&label=build&logo=Github">
 <img alt="Codacy grade" src="https://img.shields.io/codacy/grade/737a41d4c0754f5aabf83e826f0e5310?color=green&logo=Codacy">
-<img alt="Nuget version" src="https://img.shields.io/nuget/v/DevToAPI.svg?color=green&style=flat&label=nuget">
-<img alt="Nuget" src="https://img.shields.io/nuget/dt/DevToAPI?color=green&logo=Nuget&label=nuget">
+<img alt="Nuget version" src="https://img.shields.io/nuget/v/DevToAPI.svg?color=green&style=flat&label=nuget&logo=Nuget">
+<img alt="Nuget" src="https://img.shields.io/nuget/dt/DevToAPI?color=green&logo=Nuget">
 <img alt="GitHub" src="https://img.shields.io/github/license/podobaas/DevToAPI?color=green&style=flat">
 </h2>
 <br/>
