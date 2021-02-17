@@ -35,7 +35,7 @@ DevToAPI - Forem/DEV API Client Library for .NET
 | [Videos](https://docs.dev.to/api/#tag/videos)  | All methods  |
 | [Webhooks](https://docs.dev.to/api/#tag/webhooks)  | All methods  |
 | [Profile images](https://docs.dev.to/api/#tag/profile-images)  | All methods  |
-| [Admin configuration](https://docs.dev.to/api/#tag/admin-configuration)  |  Not implemented  |
+| [Admin configuration](https://docs.dev.to/api/#tag/admin-configuration)  |  All methods  |
 
 ## Install
 
@@ -98,4 +98,4 @@ Check out [DEV API documentation](https://docs.dev.to/api/)
 ## References
 + [LICENSE](LICENSE)
 + [CONTRIBUTING](CONTRIBUTING.md)
-+ [CHANGELOG](CHANGELOG.MD)
++ [CHANGELOG](CHANGELOG.md)
