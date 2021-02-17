@@ -1,4 +1,5 @@
-﻿using DevToAPI.Clients.Articles;
+﻿using DevToAPI.Clients.AdminConfigurations;
+using DevToAPI.Clients.Articles;
 using DevToAPI.Clients.Comments;
 using DevToAPI.Clients.Followers;
 using DevToAPI.Clients.Follows;
@@ -14,12 +15,20 @@ using DevToAPI.Clients.Webhooks;
 
 namespace DevToAPI
 {
+    /// <summary>
+    /// API client
+    /// </summary>
     public interface IDevToClient
     {
         /// <summary>
+        /// Site-wide configuration set by admins (requires super admin authorization)
+        /// </summary>
+        IAdminConfigurationClient AdminConfigurations { get; }
+        
+        /// <summary>
         /// Articles are all the posts users create on DEV
         /// </summary>
-        IArticleClient Articles { get;}
+        IArticleClient Articles { get; }
         
         /// <summary>
         /// Users can leave comments to articles and podcasts episodes

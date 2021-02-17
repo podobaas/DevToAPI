@@ -20,6 +20,16 @@ namespace DevToAPI.Clients.Organizations
         /// <param name="username">Username of the organization.</param>
         /// <returns></returns>
         Task<OrganizationInfo> GetByUsernameAsync(string username);
+        
+        /// <summary>
+        /// Retrieve a list of users belonging to the organization.
+        /// </summary>
+        /// <remarks>
+        /// See the <a href="https://docs.dev.to/api/#operation/getOrgUsers">getOrgUsers</a> for more information
+        /// </remarks>
+        /// <param name="username">Username of the organization</param>
+        /// <returns></returns>
+        Task<IPagination<UserInfo>> GetUsersAsync(string username);
 
         /// <summary>
         /// Retrieve a list of users belonging to the organization.
@@ -30,7 +40,17 @@ namespace DevToAPI.Clients.Organizations
         /// <param name="username">Username of the organization</param>
         /// <param name="action">Query params</param>
         /// <returns></returns>
-        Task<IPagination<UserInfo>> GetUsersAsync(string username, Action<PageQueryOption> action = null);
+        Task<IPagination<UserInfo>> GetUsersAsync(string username, Action<PageQueryOption> action);
+        
+        /// <summary>
+        /// Retrieve a list of Articles belonging to the organization.
+        /// </summary>
+        /// <remarks>
+        /// See the <a href="https://docs.dev.to/api/#operation/getOrgUsers">getOrgUsers</a> for more information.
+        /// </remarks>
+        /// <param name="username">Username of the organization</param>
+        /// <returns></returns>
+        Task<IPagination<Article>> GetArticlesAsync(string username);
         
         /// <summary>
         /// Retrieve a list of Articles belonging to the organization.
@@ -41,7 +61,17 @@ namespace DevToAPI.Clients.Organizations
         /// <param name="username">Username of the organization</param>
         /// <param name="action">Query params</param>
         /// <returns></returns>
-        Task<IPagination<Article>> GetArticlesAsync(string username, Action<PageQueryOption> action = null);
+        Task<IPagination<Article>> GetArticlesAsync(string username, Action<PageQueryOption> action);
+        
+        /// <summary>
+        /// Retrieve a list of listings belonging to the organization.
+        /// </summary>
+        /// <remarks>
+        /// See the <a href="https://docs.dev.to/api/#operation/getOrgListings">getOrgListings</a> for more information.
+        /// </remarks>
+        /// <param name="username">Username of the organization</param>
+        /// <returns></returns>
+        Task<IPagination<Listing>> GetListingsAsync(string username);
         
         /// <summary>
         /// Retrieve a list of listings belonging to the organization.
@@ -52,6 +82,6 @@ namespace DevToAPI.Clients.Organizations
         /// <param name="username">Username of the organization</param>
         /// <param name="action">Query params</param>
         /// <returns></returns>
-        Task<IPagination<Listing>> GetListingsAsync(string username, Action<PageQueryOption> action = null);
+        Task<IPagination<Listing>> GetListingsAsync(string username, Action<PageQueryOption> action);
     }
 }

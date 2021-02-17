@@ -20,7 +20,12 @@ namespace DevToAPI.Clients.Listings
         
         public ListingClient(IApiConnection apiConnection) : base(apiConnection){}
 
-        public async Task<IPagination<Listing>> GetAsync(Action<PageQueryOption> action = null)
+        public async Task<IPagination<Listing>> GetAsync()
+        {
+            return await ApiConnection.ExecutePaginationGetAsync<Listing>(Route, new PageQueryOption()).ConfigureAwait(false);
+        }
+
+        public async Task<IPagination<Listing>> GetAsync(Action<PageQueryOption> action)
         {
             var queryOption = new PageQueryOption();
             action?.Invoke(queryOption);
@@ -31,7 +36,12 @@ namespace DevToAPI.Clients.Listings
             return await ApiConnection.ExecutePaginationGetAsync<Listing>(Route, queryOption).ConfigureAwait(false);
         }
 
-        public async Task<IPagination<Listing>> GetByCategoryAsync(CategoryListing category, Action<PageQueryOption> action = null)
+        public async Task<IPagination<Listing>> GetByCategoryAsync(CategoryListing category)
+        {
+            return await ApiConnection.ExecutePaginationGetAsync<Listing>($"{Route}/category/{category.ToString().ToLower()}", new PageQueryOption()).ConfigureAwait(false);
+        }
+
+        public async Task<IPagination<Listing>> GetByCategoryAsync(CategoryListing category, Action<PageQueryOption> action)
         {
             var queryOption = new PageQueryOption();
             action?.Invoke(queryOption);

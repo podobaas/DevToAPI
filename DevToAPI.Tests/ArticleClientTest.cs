@@ -118,7 +118,7 @@ namespace DevToAPI.Tests
 
             await client.GetAsync();
             
-            await apiClient.Received().ExecutePaginationGetAsync<Article>("articles", Arg.Any<PageQueryOption>());
+            await apiClient.Received().ExecutePaginationGetAsync<Article>("articles", Arg.Any<ArticleQueryOption>());
         }
         
         [TestMethod]
@@ -134,7 +134,7 @@ namespace DevToAPI.Tests
                 option.Top = 0;
             }));
             
-            await apiClient.DidNotReceive().ExecutePaginationGetAsync<Article>("articles", new ArticleQueryOption()
+            await apiClient.DidNotReceive().ExecutePaginationGetAsync<Article>("articles", new ArticleQueryOption
             {
                 Top = 0
             });

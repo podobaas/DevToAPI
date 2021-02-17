@@ -24,7 +24,7 @@ namespace DevToAPI.Helpers
         {
             if (val < min || val > max)
             {
-                throw new ArgumentOutOfRangeException(name, $"{name} size must be in the range from 1 to 1000");
+                throw new ArgumentOutOfRangeException(name, $"{name} size must be in the range from {min} to {max}");
             }
         }
 
