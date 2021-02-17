@@ -1,4 +1,5 @@
-﻿using DevToAPI.Clients.Articles;
+﻿using DevToAPI.Clients.AdminConfigurations;
+using DevToAPI.Clients.Articles;
 using DevToAPI.Clients.Comments;
 using DevToAPI.Clients.Followers;
 using DevToAPI.Clients.Follows;
@@ -22,6 +23,11 @@ namespace DevToAPI
     public sealed class DevToClient : IDevToClient
     {
         private const string ApiUrl = "https://dev.to/api/";
+        
+        /// <summary>
+        /// Site-wide configuration set by admins (requires super admin authorization)
+        /// </summary>
+        public IAdminConfigurationClient AdminConfigurations { get;}
         
         /// <summary>
         /// Articles are all the posts users create on DEV
@@ -89,7 +95,7 @@ namespace DevToAPI
         public IProfileImageClient ProfileImages { get; }
         
         /// <summary>
-        /// Init API
+        /// API client
         /// </summary>
         /// <remarks>
         /// See the <a href="https://docs.dev.to/api/#section/Authentication/api_key">Authentication</a> for more information
@@ -99,8 +105,41 @@ namespace DevToAPI
         {
             var restClient = new RestClient(ApiUrl);
             restClient.AddDefaultHeader("api-key", token);
+            restClient.AddDefaultHeader("User-Agent", "DevToAPI-client-dotnet");
+            var apiConnection = new ApiConnection(restClient);
+
+            AdminConfigurations = new AdminConfigurationClient(apiConnection);
+            Articles = new ArticleClient(apiConnection);
+            Comments = new CommentClient(apiConnection);
+            Followers = new FollowerClient(apiConnection);
+            Follows = new FollowClient(apiConnection);
+            Listings = new ListingClient(apiConnection);
+            Organizations = new OrganizationClient(apiConnection);
+            PodcastEpisodes = new PodcastEpisodeClient(apiConnection);
+            ReadingLists = new ReadingListClient(apiConnection);
+            Tags = new TagClient(apiConnection);
+            Users = new UserClient(apiConnection);
+            Videos = new VideoClient(apiConnection);
+            Webhooks = new WebhookClient(apiConnection);
+            ProfileImages = new ProfileImageClient(apiConnection);
+        }
+
+        /// <summary>
+        /// API client
+        /// </summary>
+        /// <remarks>
+        /// See the <a href="https://docs.dev.to/api/#section/Authentication/api_key">Authentication</a> for more information
+        /// </remarks>
+        /// <param name="apiUrl">API connection url</param>
+        /// <param name="token">API key</param>
+        public DevToClient(string apiUrl, string token)
+        {
+            var restClient = new RestClient(apiUrl);
+            restClient.AddDefaultHeader("api-key", token);
+            restClient.AddDefaultHeader("User-Agent", "DevToAPI-client-dotnet");
             var apiConnection = new ApiConnection(restClient);
             
+            AdminConfigurations = new AdminConfigurationClient(apiConnection);
             Articles = new ArticleClient(apiConnection);
             Comments = new CommentClient(apiConnection);
             Followers = new FollowerClient(apiConnection);

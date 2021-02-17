@@ -17,8 +17,13 @@ namespace DevToAPI.Clients.PodcastEpisodes
         protected override string Route => "podcast_episodes";
         
         public PodcastEpisodeClient(IApiConnection apiConnection) : base(apiConnection){}
-        
-        public async Task<IPagination<PodcastEpisode>> GetAsync(Action<PageQueryOption> action = null)
+
+        public async Task<IPagination<PodcastEpisode>> GetAsync()
+        {
+            return await ApiConnection.ExecutePaginationGetAsync<PodcastEpisode>(Route, new PageQueryOption()).ConfigureAwait(false);
+        }
+
+        public async Task<IPagination<PodcastEpisode>> GetAsync(Action<PageQueryOption> action)
         {
             var queryOption = new PageQueryOption();
             action?.Invoke(queryOption);
@@ -29,7 +34,14 @@ namespace DevToAPI.Clients.PodcastEpisodes
             return await ApiConnection.ExecutePaginationGetAsync<PodcastEpisode>(Route, queryOption).ConfigureAwait(false);
         }
 
-        public async Task<IPagination<PodcastEpisode>> GetByUsernameAsync(string username, Action<PageQueryOption> action = null)
+        public async Task<IPagination<PodcastEpisode>> GetByUsernameAsync(string username)
+        {
+            ThrowHelper.ThrowIfNullOrEmpty(username, nameof(username));
+            
+            return await ApiConnection.ExecutePaginationGetAsync<PodcastEpisode>($"{Route}?username={username}", new PageQueryOption()).ConfigureAwait(false);
+        }
+
+        public async Task<IPagination<PodcastEpisode>> GetByUsernameAsync(string username, Action<PageQueryOption> action)
         {
             ThrowHelper.ThrowIfNullOrEmpty(username, nameof(username));
             

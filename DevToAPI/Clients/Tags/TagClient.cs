@@ -18,7 +18,12 @@ namespace DevToAPI.Clients.Tags
         
         public TagClient(IApiConnection apiConnection): base(apiConnection){}
 
-        public async Task<IPagination<TagArticle>> GetAsync(Action<PageQueryOption> action = null)
+        public async Task<IPagination<TagArticle>> GetAsync()
+        {
+            return await ApiConnection.ExecutePaginationGetAsync<TagArticle>(Route, new PageQueryOption()).ConfigureAwait(false);
+        }
+
+        public async Task<IPagination<TagArticle>> GetAsync(Action<PageQueryOption> action)
         {
             var queryOption = new PageQueryOption();
             action?.Invoke(queryOption);

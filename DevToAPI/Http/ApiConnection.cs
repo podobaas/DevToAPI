@@ -92,7 +92,7 @@ namespace DevToAPI.Http
         {
             _restClient.AddDefaultHeader("Content-Type", "application/json");
             var restRequest = new RestRequest(endpoint, Method.POST, DataFormat.Json);
-            var json = JsonConvert.SerializeObject(request, new JsonSerializerSettings()
+            var json = JsonConvert.SerializeObject(request, new JsonSerializerSettings
             {
                 NullValueHandling = NullValueHandling.Ignore
             });
@@ -114,7 +114,7 @@ namespace DevToAPI.Http
         {
             _restClient.AddDefaultHeader("Content-Type", "application/json");
             var restRequest = new RestRequest(endpoint, Method.PUT, DataFormat.Json);
-            var json = JsonConvert.SerializeObject(request, new JsonSerializerSettings()
+            var json = JsonConvert.SerializeObject(request, new JsonSerializerSettings
             {
                 NullValueHandling = NullValueHandling.Ignore
             });
@@ -130,6 +130,26 @@ namespace DevToAPI.Http
 
             var error = new JsonDeserializer().Deserialize<Error>(response);
             throw new DevToApiException(error);
+        }
+
+        public async Task ExecutePutAsync<TRequest>(string endpoint, TRequest request)
+        {
+            _restClient.AddDefaultHeader("Content-Type", "application/json");
+            var restRequest = new RestRequest(endpoint, Method.PUT, DataFormat.Json);
+            var json = JsonConvert.SerializeObject(request, new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Ignore
+            });
+            
+            restRequest.AddParameter("application/json", json, ParameterType.RequestBody);
+            
+            var response = await _restClient.ExecuteAsync(restRequest).ConfigureAwait(false);
+
+            if (!response.IsSuccessful)
+            {
+                var error = new JsonDeserializer().Deserialize<Error>(response);
+                throw new DevToApiException(error);
+            }
         }
 
         public async Task ExecuteDeleteAsync(string endpoint)

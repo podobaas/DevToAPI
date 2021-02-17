@@ -17,9 +17,28 @@ namespace DevToAPI.Clients.PodcastEpisodes
         /// <remarks>
         /// See the <a href="https://docs.dev.to/api/#operation/getPodcastEpisodes">getPodcastEpisodes</a> for more information.
         /// </remarks>
+        /// <returns></returns>
+        Task<IPagination<PodcastEpisode>> GetAsync();
+        
+        /// <summary>
+        /// Retrieve a list of podcast episodes.
+        /// </summary>
+        /// <remarks>
+        /// See the <a href="https://docs.dev.to/api/#operation/getPodcastEpisodes">getPodcastEpisodes</a> for more information.
+        /// </remarks>
         /// <param name="action">Query params</param>
         /// <returns></returns>
-        Task<IPagination<PodcastEpisode>> GetAsync(Action<PageQueryOption> action = null);
+        Task<IPagination<PodcastEpisode>> GetAsync(Action<PageQueryOption> action);
+        
+        /// <summary>
+        /// Retrieve a list of podcast episodes.
+        /// </summary>
+        /// <remarks>
+        /// See the <a href="https://docs.dev.to/api/#operation/getPodcastEpisodes">getPodcastEpisodes</a> for more information.
+        /// </remarks>
+        /// <param name="username">Username of the podcast</param>
+        /// <returns></returns>
+        Task<IPagination<PodcastEpisode>> GetByUsernameAsync(string username);
 
         /// <summary>
         /// Retrieve a list of podcast episodes.
@@ -30,6 +49,6 @@ namespace DevToAPI.Clients.PodcastEpisodes
         /// <param name="username">Username of the podcast</param>
         /// <param name="action">Query params</param>
         /// <returns></returns>
-        Task<IPagination<PodcastEpisode>> GetByUsernameAsync(string username, Action<PageQueryOption> action = null);
+        Task<IPagination<PodcastEpisode>> GetByUsernameAsync(string username, Action<PageQueryOption> action);
     }
 }

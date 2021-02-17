@@ -25,7 +25,14 @@ namespace DevToAPI.Clients.Organizations
             return await ApiConnection.ExecuteGetAsync<OrganizationInfo>($"{Route}/{username}").ConfigureAwait(false);
         }
 
-        public async Task<IPagination<UserInfo>> GetUsersAsync(string username, Action<PageQueryOption> action = null)
+        public async Task<IPagination<UserInfo>> GetUsersAsync(string username)
+        {
+            ThrowHelper.ThrowIfNullOrEmpty(username, nameof(username));
+            
+            return await ApiConnection.ExecutePaginationGetAsync<UserInfo>($"{Route}/{username}/users", new PageQueryOption()).ConfigureAwait(false);
+        }
+
+        public async Task<IPagination<UserInfo>> GetUsersAsync(string username, Action<PageQueryOption> action)
         {
             ThrowHelper.ThrowIfNullOrEmpty(username, nameof(username));
 
@@ -38,7 +45,14 @@ namespace DevToAPI.Clients.Organizations
             return await ApiConnection.ExecutePaginationGetAsync<UserInfo>($"{Route}/{username}/users", queryOption).ConfigureAwait(false);
         }
 
-        public async Task<IPagination<Article>> GetArticlesAsync(string username, Action<PageQueryOption> action = null)
+        public async Task<IPagination<Article>> GetArticlesAsync(string username)
+        {
+            ThrowHelper.ThrowIfNullOrEmpty(username, nameof(username));
+            
+            return await ApiConnection.ExecutePaginationGetAsync<Article>($"{Route}/{username}/articles", new PageQueryOption()).ConfigureAwait(false);
+        }
+
+        public async Task<IPagination<Article>> GetArticlesAsync(string username, Action<PageQueryOption> action)
         {
             ThrowHelper.ThrowIfNullOrEmpty(username, nameof(username));
 
@@ -49,6 +63,13 @@ namespace DevToAPI.Clients.Organizations
             ThrowHelper.ThrowIfOutOfRange(queryOption.PageSize, 1, 1000, nameof(queryOption.PageSize));
             
             return await ApiConnection.ExecutePaginationGetAsync<Article>($"{Route}/{username}/articles", queryOption).ConfigureAwait(false);
+        }
+
+        public async Task<IPagination<Listing>> GetListingsAsync(string username)
+        {
+            ThrowHelper.ThrowIfNullOrEmpty(username, nameof(username));
+            
+            return await ApiConnection.ExecutePaginationGetAsync<Listing>($"{Route}/{username}/listings", new PageQueryOption()).ConfigureAwait(false);
         }
 
         public async Task<IPagination<Listing>> GetListingsAsync(string username, Action<PageQueryOption> action = null)

@@ -17,8 +17,13 @@ namespace DevToAPI.Clients.Followers
         protected override string Route => "followers";
 
         public FollowerClient(IApiConnection apiConnection) : base(apiConnection) { }
-        
-        public async Task<IPagination<UserFollower>> GetAsync(Action<PageQueryOption> action = null)
+
+        public async Task<IPagination<UserFollower>> GetAsync()
+        {
+            return await ApiConnection.ExecutePaginationGetAsync<UserFollower>($"{Route}/users", new PageQueryOption()).ConfigureAwait(false);
+        }
+
+        public async Task<IPagination<UserFollower>> GetAsync(Action<PageQueryOption> action)
         {
             var queryOption = new PageQueryOption();
             action?.Invoke(queryOption);

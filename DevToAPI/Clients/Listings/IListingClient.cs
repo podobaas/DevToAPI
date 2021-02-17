@@ -19,9 +19,28 @@ namespace DevToAPI.Clients.Listings
         /// <remarks>
         /// See the <a href="https://docs.dev.to/api/#operation/getListings">getListings</a> for more information
         /// </remarks>
+        /// <returns></returns>
+        Task<IPagination<Listing>> GetAsync();
+        
+        /// <summary>
+        /// Retrieve a list of listings.
+        /// </summary>
+        /// <remarks>
+        /// See the <a href="https://docs.dev.to/api/#operation/getListings">getListings</a> for more information
+        /// </remarks>
         /// <param name="action">Query params</param>
         /// <returns></returns>
-        Task<IPagination<Listing>> GetAsync(Action<PageQueryOption> action = null);
+        Task<IPagination<Listing>> GetAsync(Action<PageQueryOption> action);
+        
+        /// <summary>
+        /// Retrieve a list of listings belonging to the specified category.
+        /// </summary>
+        /// <remarks>
+        /// See the <a href="https://docs.dev.to/api/#operation/getListingsByCategory">getListingsByCategory</a> for more information
+        /// </remarks>
+        /// <param name="category">The category of the listing</param>
+        /// <returns></returns>
+        Task<IPagination<Listing>> GetByCategoryAsync(CategoryListing category);
 
         /// <summary>
         /// Retrieve a list of listings belonging to the specified category.
@@ -32,7 +51,7 @@ namespace DevToAPI.Clients.Listings
         /// <param name="category">The category of the listing</param>
         /// <param name="action">Query params</param>
         /// <returns></returns>
-        Task<IPagination<Listing>> GetByCategoryAsync(CategoryListing category, Action<PageQueryOption> action = null);
+        Task<IPagination<Listing>> GetByCategoryAsync(CategoryListing category, Action<PageQueryOption> action);
 
         /// <summary>
         /// Retrieve a list of listings belonging to the specified category.

@@ -19,7 +19,12 @@ namespace DevToAPI.Clients.Articles
         
         public ArticleClient(IApiConnection apiConnection): base(apiConnection){}
 
-        public async Task<IPagination<MyArticle>> GetMyPublishedAsync(Action<PageQueryOption> action = null)
+        public async Task<IPagination<MyArticle>> GetMyPublishedAsync()
+        {
+            return await ApiConnection.ExecutePaginationGetAsync<MyArticle>($"{Route}/me/published", new PageQueryOption()).ConfigureAwait(false);
+        }
+
+        public async Task<IPagination<MyArticle>> GetMyPublishedAsync(Action<PageQueryOption> action)
         {
             var queryOption = new PageQueryOption();
             action?.Invoke(queryOption);
@@ -30,7 +35,12 @@ namespace DevToAPI.Clients.Articles
             return await ApiConnection.ExecutePaginationGetAsync<MyArticle>($"{Route}/me/published", queryOption).ConfigureAwait(false);
         }
 
-        public async Task<IPagination<MyArticle>> GetMyUnpublishedAsync(Action<PageQueryOption> action = null)
+        public async Task<IPagination<MyArticle>> GetMyUnpublishedAsync()
+        {
+            return await ApiConnection.ExecutePaginationGetAsync<MyArticle>($"{Route}/me/unpublished", new PageQueryOption()).ConfigureAwait(false);
+        }
+
+        public async Task<IPagination<MyArticle>> GetMyUnpublishedAsync(Action<PageQueryOption> action)
         {
             var queryOption = new PageQueryOption();
             action?.Invoke(queryOption);
@@ -41,7 +51,12 @@ namespace DevToAPI.Clients.Articles
             return await ApiConnection.ExecutePaginationGetAsync<MyArticle>($"{Route}/me/unpublished", queryOption).ConfigureAwait(false);
         }
 
-        public async Task<IPagination<MyArticle>> GetAllMyAsync(Action<PageQueryOption> action = null)
+        public async Task<IPagination<MyArticle>> GetAllMyAsync()
+        {
+            return await ApiConnection.ExecutePaginationGetAsync<MyArticle>($"{Route}/me/all", new PageQueryOption()).ConfigureAwait(false);
+        }
+
+        public async Task<IPagination<MyArticle>> GetAllMyAsync(Action<PageQueryOption> action)
         {
             var queryOption = new PageQueryOption();
             action?.Invoke(queryOption);
@@ -51,8 +66,13 @@ namespace DevToAPI.Clients.Articles
             
             return await ApiConnection.ExecutePaginationGetAsync<MyArticle>($"{Route}/me/all", queryOption).ConfigureAwait(false);
         }
-        
-        public async Task<IPagination<Article>> GetAsync(Action<ArticleQueryOption> action = null)
+
+        public async Task<IPagination<Article>> GetAsync()
+        {
+            return await ApiConnection.ExecutePaginationGetAsync<Article>(Route, new ArticleQueryOption()).ConfigureAwait(false);
+        }
+
+        public async Task<IPagination<Article>> GetAsync(Action<ArticleQueryOption> action)
         {
             var queryOption = new ArticleQueryOption();
             action?.Invoke(queryOption);

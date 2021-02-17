@@ -17,8 +17,13 @@ namespace DevToAPI.Clients.Videos
         protected override string Route => "videos";
         
         public VideoClient(IApiConnection apiConnection) : base(apiConnection){}
-        
-        public async Task<IPagination<VideoArticle>> GetArticlesAsync(Action<PageQueryOption> action = null)
+
+        public async Task<IPagination<VideoArticle>> GetArticlesAsync()
+        {
+            return await ApiConnection.ExecutePaginationGetAsync<VideoArticle>(Route, new PageQueryOption()).ConfigureAwait(false);
+        }
+
+        public async Task<IPagination<VideoArticle>> GetArticlesAsync(Action<PageQueryOption> action)
         {
             var queryOption = new PageQueryOption();
             action?.Invoke(queryOption);

@@ -18,10 +18,28 @@ namespace DevToAPI.Clients.Articles
         /// <remarks>
         /// See the <a href="https://docs.dev.to/api/#operation/getUserPublishedArticles">getUserPublishedArticles</a> for more information
         /// </remarks>
+        /// <returns></returns>
+        Task<IPagination<MyArticle>> GetMyPublishedAsync();
+        
+        /// <summary>
+        /// Retrieve a list of published articles on behalf of an authenticated user.
+        /// </summary>
+        /// <remarks>
+        /// See the <a href="https://docs.dev.to/api/#operation/getUserPublishedArticles">getUserPublishedArticles</a> for more information
+        /// </remarks>
         /// <param name="action">Query params</param>
         /// <returns></returns>
-        Task<IPagination<MyArticle>> GetMyPublishedAsync(Action<PageQueryOption> action = null);
+        Task<IPagination<MyArticle>> GetMyPublishedAsync(Action<PageQueryOption> action);
 
+        /// <summary>
+        /// Retrieve a list of published articles on behalf of an authenticated user.
+        /// </summary>
+        /// <remarks>
+        /// See the <a href="https://docs.dev.to/api/#operation/getUserUnpublishedArticles">getUserUnpublishedArticles</a> for more information
+        /// </remarks>
+        /// <returns></returns>
+        Task<IPagination<MyArticle>> GetMyUnpublishedAsync();
+        
         /// <summary>
         /// Retrieve a list of published articles on behalf of an authenticated user.
         /// </summary>
@@ -30,8 +48,17 @@ namespace DevToAPI.Clients.Articles
         /// </remarks>
         /// <param name="action">Query params</param>
         /// <returns></returns>
-        Task<IPagination<MyArticle>> GetMyUnpublishedAsync(Action<PageQueryOption> action = null);
+        Task<IPagination<MyArticle>> GetMyUnpublishedAsync(Action<PageQueryOption> action);
 
+        /// <summary>
+        /// Retrieve a list of all articles on behalf of an authenticated user.
+        /// </summary>
+        /// <remarks>
+        /// See the <a href="https://docs.dev.to/api/#operation/getUserAllArticles">getUserAllArticles</a> for more information
+        /// </remarks>
+        /// <returns></returns>
+        Task<IPagination<MyArticle>> GetAllMyAsync();
+        
         /// <summary>
         /// Retrieve a list of all articles on behalf of an authenticated user.
         /// </summary>
@@ -40,8 +67,16 @@ namespace DevToAPI.Clients.Articles
         /// </remarks>
         /// <param name="action">Query params</param>
         /// <returns></returns>
-        Task<IPagination<MyArticle>> GetAllMyAsync(Action<PageQueryOption> action = null);
+        Task<IPagination<MyArticle>> GetAllMyAsync(Action<PageQueryOption> action);
 
+        /// <summary>
+        /// Retrieve a list of articles.
+        /// </summary>
+        /// <remarks>
+        /// See the <a href="https://docs.dev.to/api/#operation/getArticles">getArticles</a> for more information
+        /// </remarks>
+        /// <returns></returns>
+        Task<IPagination<Article>> GetAsync();
         
         /// <summary>
         /// Retrieve a list of articles.
@@ -51,7 +86,7 @@ namespace DevToAPI.Clients.Articles
         /// </remarks>
         /// <param name="action">Query params</param>
         /// <returns></returns>
-        Task<IPagination<Article>> GetAsync(Action<ArticleQueryOption> action = null);
+        Task<IPagination<Article>> GetAsync(Action<ArticleQueryOption> action);
 
         /// <summary>
         /// Retrieve a single published article given it's id.

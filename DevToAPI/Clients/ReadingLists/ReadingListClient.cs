@@ -18,7 +18,12 @@ namespace DevToAPI.Clients.ReadingLists
         
         public ReadingListClient(IApiConnection apiConnection) : base(apiConnection){}
 
-        public async Task<IPagination<ReadingList>> GetAsync(Action<PageQueryOption> action = null)
+        public async Task<IPagination<ReadingList>> GetAsync()
+        {
+            return await ApiConnection.ExecutePaginationGetAsync<ReadingList>(Route, new PageQueryOption()).ConfigureAwait(false);
+        }
+
+        public async Task<IPagination<ReadingList>> GetAsync(Action<PageQueryOption> action)
         {
             var queryOption = new PageQueryOption();
             action?.Invoke(queryOption);
